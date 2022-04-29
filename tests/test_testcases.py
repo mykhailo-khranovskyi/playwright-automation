@@ -15,3 +15,12 @@ def test_add_new_tc(desktop_app_auth, name, description):
     desktop_app_auth.navigate_to('Test Cases')
     assert desktop_app_auth.test_cases.check_test_exists(name)
     desktop_app_auth.test_cases.delete_test_by_name(name)
+
+
+def test_testcase_does_not_exist(desktop_app_auth):
+    desktop_app_auth.navigate_to('Test Cases')
+    assert desktop_app_auth.test_cases.check_test_exists('qwerty')
+
+
+def test_git():
+    assert True
