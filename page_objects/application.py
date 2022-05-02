@@ -1,7 +1,7 @@
 import logging
 import allure
 from playwright.sync_api import Browser
-from playwright.sync_api import Request, Route, ConsoleMessage,Dialog
+from playwright.sync_api import Request, Route, ConsoleMessage, Dialog
 from .test_cases import TestCases
 from .demo_page import DemoPages
 
@@ -9,7 +9,7 @@ from .demo_page import DemoPages
 class App:
     def __init__(self, browser: Browser, base_url: str, **kwargs):
         self.browser = browser
-        self.context = self.browser.new_context(**kwargs)
+        self.context = self.browser.new_context(http_credentials={"username": "diviac", "password": "rembo"}, **kwargs)
         self.page = self.context.new_page()
         self.base_url = base_url
         self.test_cases = TestCases(self.page)
@@ -25,6 +25,7 @@ class App:
 
         self.page.on('console', console_handler)
         self.page.on('dialog', dialog_handler)
+
 
     @allure.step
     def goto(self, endpoint: str, use_base_url=True):

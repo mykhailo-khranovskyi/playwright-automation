@@ -69,6 +69,15 @@ def get_browser(get_playwright, request):
 
 
 @fixture(scope='session')
+def padi_desktop_app(get_browser, request):
+    base_url = request.config.getini('padi_base_url')
+    app = App(get_browser, base_url=base_url, **BROWSER_OPTIONS)
+    app.goto('/')
+    yield app
+    app.close()
+
+
+@fixture(scope='session')
 def desktop_app(get_browser, request):
     base_url = request.config.getini('base_url')
     app = App(get_browser, base_url=base_url, **BROWSER_OPTIONS)
@@ -146,6 +155,7 @@ def make_screenshot(request):
 def pytest_addoption(parser):
     parser.addoption('--secure', action='store', default='secure.json')
     parser.addini('base_url', help='base url of site under test', default='http://127.0.0.1:8000')
+    parser.addini('padi_base_url', help='base url of site under test', default='https://travel.padi.comingsoon.rocks')
     parser.addini('db_path', help='path to sqlite db file', default='/Users/mykhailokhranovskyi/Documents/mk_test_automation/TestMe-TCM/db.sqlite3')
     parser.addini('headless', help='run browser in headless mode', default='True')
 
