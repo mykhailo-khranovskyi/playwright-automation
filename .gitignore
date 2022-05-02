@@ -22,3 +22,4 @@ secure.json
 
 # env
 /venv/
+/tests/report.xml
