@@ -12,9 +12,13 @@ lib/
 
 # reporting
 report/
+/report.xml
 
 # logs
 *.log
 
 # secure
 secure.json
+
+# env
+/venv/

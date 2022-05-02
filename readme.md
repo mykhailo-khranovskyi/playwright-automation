@@ -10,7 +10,7 @@ Tools:
 ##Install guide
 1. Install python
 2. Install PyCharm
-3. Install python dependencies pip install -r requirements.txt
+3. Install python dependencies `pip install -r requirements.txt`
 4. Make sure playwright version 1.8+ installed
 
 ##Project structure
@@ -22,10 +22,12 @@ Tools:
   - settings.py
 
 ##Run guide
-- Run tests using command pytest
+- Run tests using command `pytest`
+- Generate allure report `allure serve ./report/ --port 3060`
 
 ##Useful links
 - https://playwright.dev/python/
 - https://www.udemy.com/course/test-automation-with-playwright-and-python/
--  https://www.youtube.com/playlist?list=PLGE9K4YL_ywj4F7cSA4oDptnqTmyS7hZp
+- https://www.youtube.com/playlist?list=PLGE9K4YL_ywj4F7cSA4oDptnqTmyS7hZp
 - https://github.com/microsoft/playwright-python
+- https://docs.qameta.io/allure/
