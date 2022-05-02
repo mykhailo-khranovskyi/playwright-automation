@@ -23,7 +23,7 @@ def get_web_service(request):
     config = load_config(secure)
     web = WebService(base_url)
     web.login(**config)
-    yield
+    yield web
     web.close()
 
 
