@@ -4,6 +4,7 @@ from playwright.sync_api import Browser
 from playwright.sync_api import Request, Route, ConsoleMessage, Dialog
 from .test_cases import TestCases
 from .demo_page import DemoPages
+from .dr_list_page import DrListPage
 
 
 class App:
@@ -14,6 +15,7 @@ class App:
         self.base_url = base_url
         self.test_cases = TestCases(self.page)
         self.demo_pages = DemoPages(self.page)
+        self.dr_list_page = DrListPage(self.page)
 
         def console_handler(message: ConsoleMessage):
             if message.type == 'error':
@@ -25,7 +27,6 @@ class App:
 
         self.page.on('console', console_handler)
         self.page.on('dialog', dialog_handler)
-
 
     @allure.step
     def goto(self, endpoint: str, use_base_url=True):
