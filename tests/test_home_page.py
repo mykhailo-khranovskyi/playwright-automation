@@ -1,4 +1,5 @@
 import time
+
 import allure
 from pytest import mark
 
@@ -29,3 +30,15 @@ def test_main_search_by_shop_name(padi_desktop_app, shop_name, url, h1):
     padi_desktop_app.home_page.main_search(shop_name)
     assert padi_desktop_app.details_page.check_url() == url
     assert padi_desktop_app.details_page.check_h1() == h1
+
+
+@allure.title('DC-T109: test sign in')
+def test_sign_in(padi_desktop_app):
+    email = 'mykhailo.khranovskyi@djangostars.com'
+    password = 'Aa1122334!'
+    initial_url = 'https://travel.padi.comingsoon.rocks/'
+    padi_desktop_app.goto('')
+    padi_desktop_app.home_page.sign_in(email, password)
+    assert padi_desktop_app.home_page.check_url() == initial_url
+    assert padi_desktop_app.home_page.check_account_icon_displayed()
+

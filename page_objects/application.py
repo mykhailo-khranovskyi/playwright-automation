@@ -2,8 +2,8 @@ import logging
 import allure
 from playwright.sync_api import Browser
 from playwright.sync_api import Request, Route, ConsoleMessage, Dialog
-from .test_cases_TBD import TestCases
-from .demo_page_TBD import DemoPages
+from .TBD_test_cases import TestCases
+from .TBD_demo_page import DemoPages
 from .dr_list_page import DrListPage
 from .la_list_page import LaListPage
 from .dc_list_page import DcListPage

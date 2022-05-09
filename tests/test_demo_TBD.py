@@ -1,6 +1,8 @@
+import pytest
 import allure
 
 
+@pytest.mark.skip(reason="this test is for learning")
 @allure.title('test wait more 30 seconds')
 def test_wait_more_30_sec(desktop_app_auth):
     desktop_app_auth.navigate_to('Demo pages')
@@ -8,6 +10,7 @@ def test_wait_more_30_sec(desktop_app_auth):
     assert desktop_app_auth.demo_pages.check_wait_page()
 
 
+@pytest.mark.skip(reason="this test is for learning")
 @allure.title('test ajax')
 def test_ajax(desktop_app_auth):
     desktop_app_auth.navigate_to('Demo pages')
@@ -15,6 +18,7 @@ def test_ajax(desktop_app_auth):
     assert 2 == desktop_app_auth.demo_pages.get_ajax_responses_count()
 
 
+@pytest.mark.skip(reason="this test is for learning")
 def test_handlers(desktop_app_auth):
     desktop_app_auth.navigate_to('Demo pages')
     desktop_app_auth.demo_pages.click_new_page_button()

@@ -1,3 +1,4 @@
+import pytest
 from pytest import mark
 
 ddt = {'argnames': 'name,description',
@@ -8,6 +9,7 @@ ddt = {'argnames': 'name,description',
 }
 
 
+@pytest.mark.skip(reason="this test is for learning")
 @mark.parametrize(**ddt)
 def test_add_new_tc(desktop_app_auth, name, description, get_db):
     tests = get_db.list_test_cases()
@@ -20,11 +22,13 @@ def test_add_new_tc(desktop_app_auth, name, description, get_db):
 #    desktop_app_auth.test_cases.delete_test_by_name(name)
 
 
+@pytest.mark.skip(reason="this test is for learning")
 def test_testcase_does_not_exist(desktop_app_auth):
     desktop_app_auth.navigate_to('Test Cases')
     assert not desktop_app_auth.test_cases.check_test_exists('qwerty')
 
 
+@pytest.mark.skip(reason="this test is for learning")
 def test_delete_test_case(desktop_app_auth, get_web_service):
     test_name = 'test for delete'
     get_web_service.create_test(test_name, 'delete me pls')
