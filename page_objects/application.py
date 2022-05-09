@@ -2,9 +2,14 @@ import logging
 import allure
 from playwright.sync_api import Browser
 from playwright.sync_api import Request, Route, ConsoleMessage, Dialog
-from .test_cases import TestCases
-from .demo_page import DemoPages
+from .test_cases_TBD import TestCases
+from .demo_page_TBD import DemoPages
 from .dr_list_page import DrListPage
+from .la_list_page import LaListPage
+from .dc_list_page import DcListPage
+from .home_page import HomePage
+from .list_page import ListPage
+from .details_page import DetailsPage
 
 
 class App:
@@ -16,6 +21,12 @@ class App:
         self.test_cases = TestCases(self.page)
         self.demo_pages = DemoPages(self.page)
         self.dr_list_page = DrListPage(self.page)
+        self.la_list_page = LaListPage(self.page)
+        self.dc_list_page = DcListPage(self.page)
+        self.home_page = HomePage(self.page)
+        self.list_page = ListPage(self.page)
+        self.details_page = DetailsPage(self.page)
+
 
         def console_handler(message: ConsoleMessage):
             if message.type == 'error':
