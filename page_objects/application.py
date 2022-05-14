@@ -10,7 +10,9 @@ from .dc_list_page import DcListPage
 from .home_page import HomePage
 from .list_page import ListPage
 from .details_page import DetailsPage
-
+from .vacation_checkout_page import VacationChekoutPage
+from .adventures_list_page import AdventuresListPage
+from .adventures_details_page import AdventureDetailsPage
 
 class App:
     def __init__(self, browser: Browser, base_url: str, **kwargs):
@@ -26,7 +28,9 @@ class App:
         self.home_page = HomePage(self.page)
         self.list_page = ListPage(self.page)
         self.details_page = DetailsPage(self.page)
-
+        self.vacation_checkout_page = VacationChekoutPage(self.page)
+        self.adventures_list_page = AdventuresListPage(self.page)
+        self.adventures_details_page = AdventureDetailsPage(self.page)
 
         def console_handler(message: ConsoleMessage):
             if message.type == 'error':
