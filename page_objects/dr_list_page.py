@@ -1,11 +1,13 @@
-import time
 import allure
-from playwright.async_api import Page
+
+from components.search_field import SearchFieldComponent
+from page_objects.base_page import BasePage
 
 
-class DrListPage:
-    def __init__(self, page: Page):
-        self.page = page
+class DrListPage(BasePage):
+    URL = '/s/dive-resorts/all/'
+
+    search_component = SearchFieldComponent('#typeahead-react ')
 
     @allure.step
     def search_by_resort_name(self, resort_name):
@@ -27,4 +29,3 @@ class DrListPage:
     def get_shop_title(self):
         self.page.wait_for_selector('.resort-title')
         return self.page.text_content('.resort-title')
-

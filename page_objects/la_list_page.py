@@ -1,10 +1,10 @@
 import allure
-from playwright.async_api import Page
+
+from page_objects.base_page import BasePage
 
 
-class LaListPage:
-    def __init__(self, page: Page):
-        self.page = page
+class LaListPage(BasePage):
+    URL = '/s/liveaboards/all/'
 
     @allure.step
     def search_by_la_name(self, la_name):
