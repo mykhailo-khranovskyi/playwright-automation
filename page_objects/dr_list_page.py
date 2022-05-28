@@ -1,14 +1,16 @@
 import allure
-from playwright.async_api import Page
+
+from components.search_input import SearchInput
+from page_objects.base_page import BasePage
 
 
-class DrListPage:
-    def __init__(self, page: Page):
-        self.page = page
+class DrListPage(BasePage):
+    URL = '/s/dive-resorts/all/'
+    resort_search_input = SearchInput('#filter-list > div.filter-row.clearfix > div > div')
 
     @allure.step
     def search_by_resort_name(self, resort_name):
-        self.page.fill("#filter-list > div.filter-row.clearfix > div > div > input", resort_name)
+        self.resort_search_input.set_value(resort_name)
         self.page.wait_for_selector('#react-autowhatever-1--item-0 > div')
         self.page.keyboard.press("ArrowDown")
 

@@ -1,10 +1,10 @@
 import allure
-from playwright.async_api import Page
+
+from page_objects.base_page import BasePage
 
 
-class DcListPage:
-    def __init__(self, page: Page):
-        self.page = page
+class DcListPage(BasePage):
+    URL = '/s/dive-centers/all/'
 
     @allure.step
     def search_by_dc_name(self, dc_name):
