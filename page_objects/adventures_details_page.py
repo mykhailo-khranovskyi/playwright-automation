@@ -9,4 +9,3 @@ class AdventureDetailsPage:
     @allure.step
     def click_plus_btn(self):
         self.page.click('.plus-minus-btn.plus')
-

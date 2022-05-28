@@ -1,4 +1,3 @@
-import time
 import allure
 from playwright.async_api import Page
 

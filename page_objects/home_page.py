@@ -1,5 +1,3 @@
-import time
-
 import allure
 from playwright.async_api import Page
 
@@ -34,7 +32,3 @@ class HomePage:
     @allure.step
     def check_account_icon_displayed(self):
         return self.page.locator('.logged-user')
-
-
-
-

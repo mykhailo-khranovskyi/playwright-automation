@@ -41,7 +41,3 @@ class DemoPages:
         alert('This is injected alert');        
         '''
         self.page.evaluate(js)
-
-
-
-

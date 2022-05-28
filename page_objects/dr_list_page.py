@@ -1,4 +1,3 @@
-import time
 import allure
 from playwright.async_api import Page
 
@@ -27,4 +26,3 @@ class DrListPage:
     def get_shop_title(self):
         self.page.wait_for_selector('.resort-title')
         return self.page.text_content('.resort-title')
-

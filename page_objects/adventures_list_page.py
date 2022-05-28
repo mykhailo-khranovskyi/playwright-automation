@@ -1,5 +1,3 @@
-import time
-
 import allure
 from playwright.async_api import Page
 
@@ -26,7 +24,3 @@ class AdventuresListPage:
     def handle_page(self, page):
         self.page.wait_for_load_state()
         print(self.page.title())
-
-
-
-

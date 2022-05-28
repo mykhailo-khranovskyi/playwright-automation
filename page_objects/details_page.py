@@ -1,7 +1,6 @@
-import time
 import re
 import allure
-from playwright.async_api import Page, expect
+from playwright.async_api import Page
 
 
 class DetailsPage:
@@ -14,9 +13,9 @@ class DetailsPage:
 
     @allure.step
     def check_h1(self):
-         raw = self.page.locator('h1').text_content()
-         result = re.search(r'\w.+', raw)
-         return result.group(0)
+        raw = self.page.locator('h1').text_content()
+        result = re.search(r'\w.+', raw)
+        return result.group(0)
 
     @allure.step
     def click_view_dates_and_prices_btn(self):

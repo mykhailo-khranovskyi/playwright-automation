@@ -45,4 +45,3 @@ def WIP_test_diving_checkout(padi_desktop_app):
     # padi_desktop_app.adventures_list_page.click_view_details_btn()
     padi_desktop_app.context.on("page", padi_desktop_app.adventures_list_page.handle_page(padi_desktop_app.adventures_details_page))
     padi_desktop_app.adventures_details_page.click_plus_btn()
-

@@ -22,4 +22,3 @@ class LaListPage:
         self.page.wait_for_selector('.shop-title')
         self.page.eval_on_selector('.shop-title', 'el => el.removeAttribute("target")')
         self.page.click('.shop-title')
-

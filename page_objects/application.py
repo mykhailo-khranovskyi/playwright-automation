@@ -10,9 +10,12 @@ from .dc_list_page import DcListPage
 from .home_page import HomePage
 from .list_page import ListPage
 from .details_page import DetailsPage
-from .vacation_checkout_page import VacationChekoutPage
+from .vacation_checkout_page import VacationCheckoutPage
 from .adventures_list_page import AdventuresListPage
 from .adventures_details_page import AdventureDetailsPage
+from .conservation_activity_page import ConservationActivityPage
+from .dive_guide_page import DiveGuidePage
+
 
 class App:
     def __init__(self, browser: Browser, base_url: str, **kwargs):
@@ -28,9 +31,11 @@ class App:
         self.home_page = HomePage(self.page)
         self.list_page = ListPage(self.page)
         self.details_page = DetailsPage(self.page)
-        self.vacation_checkout_page = VacationChekoutPage(self.page)
+        self.vacation_checkout_page = VacationCheckoutPage(self.page)
         self.adventures_list_page = AdventuresListPage(self.page)
         self.adventures_details_page = AdventureDetailsPage(self.page)
+        self.conservation_activity_page = ConservationActivityPage(self.page)
+        self.dive_guide_page = DiveGuidePage(self.page)
 
         def console_handler(message: ConsoleMessage):
             if message.type == 'error':

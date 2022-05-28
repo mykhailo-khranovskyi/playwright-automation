@@ -1,8 +1,8 @@
 import allure
-from playwright.async_api import Page, expect
+from playwright.async_api import Page
 
 
-class VacationChekoutPage:
+class VacationCheckoutPage:
     def __init__(self, page: Page):
         self.page = page
 
