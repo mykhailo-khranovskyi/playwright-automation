@@ -22,7 +22,7 @@ class DrListPage(BasePage):
 
     @allure.step
     def click_select_in_calendar(self):
-        self.page.click('.travel-calendar.visible button.blue-btn')
+        self.page.locator('.travel-calendar.visible button.blue-btn').click()
 
     @allure.step
     def get_shop_title(self):
