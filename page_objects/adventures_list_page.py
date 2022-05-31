@@ -1,10 +1,9 @@
 import allure
-from playwright.async_api import Page
+from page_objects.base_page import BasePage
 
 
-class AdventuresListPage:
-    def __init__(self, page: Page):
-        self.page = page
+class AdventuresListPage(BasePage):
+    URL = '/s/diving/all/'
 
     @allure.step
     def get_shop_title(self):

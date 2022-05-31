@@ -4,7 +4,7 @@ import allure
 @allure.title('DC-T854: test conservation activity flow')
 def test_conservation_main_page(padi_desktop_app):
     destination = 'Ukraine'
-    padi_desktop_app.goto('/conservation/activities/')
+    padi_desktop_app.conservation_activity_page.visit()
     padi_desktop_app.conservation_activity_page.search_from_main_page(destination)
     actual_destination = padi_desktop_app.conservation_activity_page.get_list_title()
     activity_title = padi_desktop_app.conservation_activity_page.get_activity_title()

@@ -1,10 +1,9 @@
 import allure
-from playwright.async_api import Page
+from page_objects.base_page import BasePage
 
 
-class DiveGuidePage:
-    def __init__(self, page: Page):
-        self.page = page
+class DiveGuidePage(BasePage):
+    URL = '/exploration/'
 
     @allure.step
     def main_search(self, searched_item):

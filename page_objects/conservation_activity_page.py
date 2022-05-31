@@ -1,19 +1,11 @@
 import allure
 import re
 from playwright.async_api import Page
+from page_objects.base_page import BasePage
 
 
-class ConservationActivityPage:
-    def __init__(self, page: Page):
-        self.page = page
-
-    @allure.step
-    def check_popular_activities_not_empty(self):
-        pass
-
-    @allure.step
-    def check_activities_by_category_not_empty(self):
-        pass
+class ConservationActivityPage(BasePage):
+    URL = '/conservation/activities/'
 
     @allure.step
     def search_from_main_page(self, searched_item):
