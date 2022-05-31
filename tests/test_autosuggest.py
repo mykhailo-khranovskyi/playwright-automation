@@ -13,6 +13,7 @@ def test_autosuggest(padi_desktop_app, page_name, item_name, method_name):
     assert getattr(padi_desktop_app, page_name).get_shop_title() == item_name
 
 
+@allure.title('DC-T1120 (LA/DR/DC | Text search with autosuggest by shop name')
 def test_autosuggest_with_component(padi_desktop_app):
     padi_desktop_app.dr_list_page.visit()
     padi_desktop_app.dr_list_page.resort_search_input.search_and_choose_first('Sea')

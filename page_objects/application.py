@@ -2,8 +2,6 @@ import logging
 import allure
 from playwright.sync_api import Browser
 from playwright.sync_api import Request, Route, ConsoleMessage, Dialog
-from .TBD_test_cases import TestCases
-from .TBD_demo_page import DemoPages
 from .dr_list_page import DrListPage
 from .la_list_page import LaListPage
 from .dc_list_page import DcListPage
@@ -23,8 +21,6 @@ class App:
         self.context = self.browser.new_context(http_credentials={"username": "diviac", "password": "rembo"}, **kwargs)
         self.page = self.context.new_page()
         self.base_url = base_url
-        self.test_cases = TestCases(self.page)
-        self.demo_pages = DemoPages(self.page)
         self.dr_list_page = DrListPage(self.page)
         self.la_list_page = LaListPage(self.page)
         self.dc_list_page = DcListPage(self.page)
