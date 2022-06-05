@@ -1,32 +1,21 @@
-import re
 import allure
-from playwright.async_api import Page
+
+from page_objects.base_page import BasePage, Element
 
 
-class DetailsPage:
-    def __init__(self, page: Page):
-        self.page = page
+class DetailsPage(BasePage):
+    title = Element('h1')
+
+    # View dates price section
+    price_view = Element('#minimum-price span')
+    dates_prices_button = Element('.buttons-pan .btn.btn-red')
+
+    # Pricing cards for Dive resorts
+    customize_package_button = Element('.pricing-wrapper .btn-red')
+
+    # Pricing cards for Liveaboards
+    select_cabin_button = Element('.product-status-wrapper .btn-red')
 
     @allure.step
     def check_url(self):
         return self.page.url
-
-    @allure.step
-    def check_h1(self):
-        raw = self.page.locator('h1').text_content()
-        result = re.search(r'\w.+', raw)
-        return result.group(0)
-
-    @allure.step
-    def click_view_dates_and_prices_btn(self):
-        self.page.wait_for_url('')
-        self.page.wait_for_load_state()
-        self.page.click('.buttons-pan .btn.btn-red')
-
-    @allure.step
-    def click_customize_package_btn(self):
-        self.page.click('.pricing-wrapper .btn-red')
-
-    @allure.step
-    def click_select_cabin_btn(self):
-        self.page.click('.product-status-wrapper .btn-red')

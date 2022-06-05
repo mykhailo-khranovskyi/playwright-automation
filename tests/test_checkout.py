@@ -3,31 +3,53 @@ import allure
 
 @allure.title('DC-T99: test checkout page for DR')
 def test_dr_checkout(padi_desktop_app):
+    # Navigate to Dive Resorts List page
     padi_desktop_app.dr_list_page.visit()
-    list_shop_title = padi_desktop_app.dr_list_page.get_shop_title()
-    padi_desktop_app.dr_list_page.click_on_title()
-    details_shop_title = padi_desktop_app.details_page.check_h1()
-    padi_desktop_app.details_page.click_view_dates_and_prices_btn()
-    padi_desktop_app.details_page.click_customize_package_btn()
-    padi_desktop_app.vacation_checkout_page.click_continue_btn()
-    checkout_shop_title = padi_desktop_app.vacation_checkout_page.get_h1()
-    checkout_shop_title_final_step = padi_desktop_app.vacation_checkout_page.get_shop_title_final_step()
+
+    # Dive resorts list page actions
+    dr_card = padi_desktop_app.dr_list_page.get_card_by_counter(1)
+    list_shop_title = dr_card.title.text_content()
+    dr_card.title.evaluate('el => el.removeAttribute("target")')  # TODO: handle second tab without this hack
+    dr_card.title.click()
+
+    # Detail page actions
+    details_shop_title = padi_desktop_app.details_page.title.text_custom()
+    padi_desktop_app.details_page.wait_for_load_state()
+    padi_desktop_app.details_page.dates_prices_button.click()
+    padi_desktop_app.details_page.customize_package_button.click()
+
+    # Vacation checkout actions
+    padi_desktop_app.vacation_checkout_page.continue_button.click()
+    checkout_shop_title = padi_desktop_app.vacation_checkout_page.header_shop_title.text_content()
+    checkout_shop_title_final_step = padi_desktop_app.vacation_checkout_page.shop_title.text_content()
+
     assert list_shop_title == details_shop_title == checkout_shop_title == checkout_shop_title_final_step
 
 
 @allure.title('DC-T98: test checkout page for LA')
 def test_la_checkout(padi_desktop_app):
+    # Navigate to Dive Resorts List page
     padi_desktop_app.la_list_page.visit()
-    list_shop_title = padi_desktop_app.la_list_page.get_shop_title()
-    padi_desktop_app.la_list_page.click_on_title()
-    details_shop_title = padi_desktop_app.details_page.check_h1()
-    padi_desktop_app.details_page.click_view_dates_and_prices_btn()
-    padi_desktop_app.details_page.click_select_cabin_btn()
-    padi_desktop_app.vacation_checkout_page.click_counter_plus_la()
-    padi_desktop_app.vacation_checkout_page.click_continue_btn()
-    padi_desktop_app.vacation_checkout_page.click_continue_btn()
-    checkout_shop_title = padi_desktop_app.vacation_checkout_page.get_h1()
-    checkout_shop_title_final_step = padi_desktop_app.vacation_checkout_page.get_shop_title_final_step()
+
+    # Liveaboards List page actions
+    la_card = padi_desktop_app.la_list_page.get_card_by_counter(1)
+    list_shop_title = la_card.title.text_content()
+    la_card.title.evaluate('el => el.removeAttribute("target")')  # TODO: handle second tab without this hack
+    la_card.title.click()
+
+    # Detail page actions
+    details_shop_title = padi_desktop_app.details_page.title.text_custom()
+    padi_desktop_app.details_page.wait_for_load_state()
+    padi_desktop_app.details_page.dates_prices_button.click()
+    padi_desktop_app.details_page.select_cabin_button.click()
+
+    # Vacation checkout actions
+    padi_desktop_app.vacation_checkout_page.counter_plus_la.click()
+    padi_desktop_app.vacation_checkout_page.continue_button.click()
+    padi_desktop_app.vacation_checkout_page.continue_button.click()
+    checkout_shop_title = padi_desktop_app.vacation_checkout_page.header_shop_title.text_content()
+    checkout_shop_title_final_step = padi_desktop_app.vacation_checkout_page.shop_title.text_content()
+
     assert list_shop_title == details_shop_title == checkout_shop_title == checkout_shop_title_final_step
 
 

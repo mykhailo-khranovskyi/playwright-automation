@@ -18,7 +18,11 @@ from .dive_guide_page import DiveGuidePage
 class App:
     def __init__(self, browser: Browser, base_url: str, **kwargs):
         self.browser = browser
-        self.context = self.browser.new_context(http_credentials={"username": "diviac", "password": "rembo"}, **kwargs)
+        self.context = self.browser.new_context(
+            http_credentials={"username": "diviac", "password": "rembo"}, no_viewport=True ,**kwargs
+        )
+        self.context.set_default_timeout(timeout=15000)
+        self.context.set_default_navigation_timeout(timeout=30000)
         self.page = self.context.new_page()
         self.base_url = base_url
         self.dr_list_page = DrListPage(self.page)
