@@ -19,7 +19,7 @@ def test_main_search_by_destination(padi_desktop_app, location, url, h1):
     padi_desktop_app.home_page.visit()
     padi_desktop_app.home_page.main_search(location)
     assert padi_desktop_app.list_page.check_url() == url
-    assert padi_desktop_app.list_page.check_h1() == h1
+    assert padi_desktop_app.details_page.title.text_custom() == h1
 
 
 @mark.parametrize(**ddt_for_shop_search)
@@ -27,7 +27,7 @@ def test_main_search_by_shop_name(padi_desktop_app, shop_name, url, h1):
     padi_desktop_app.home_page.visit()
     padi_desktop_app.home_page.main_search(shop_name)
     assert padi_desktop_app.details_page.check_url() == url
-    assert padi_desktop_app.details_page.check_h1() == h1
+    assert padi_desktop_app.details_page.title.text_custom() == h1
 
 
 @allure.title('DC-T109: test sign in')
