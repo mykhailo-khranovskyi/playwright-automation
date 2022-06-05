@@ -1,13 +1,9 @@
-from page_objects.base_page import BaseComponent
+from page_objects.base_page import BaseComponent, Element
 
 
 class TextInput(BaseComponent):
     def __init__(self, selector: str):
-        self.selector = selector
-
-    @property
-    def input(self):
-        return self.page.locator(f'{self.selector} input')
+        self.input = Element(f'{selector} input')
 
     def set_value(self, text):
         self.input.fill(text)

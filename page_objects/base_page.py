@@ -44,6 +44,15 @@ class Element:
     def evaluate(self, expression: str, **kwargs):
         self.find.evaluate(expression, **kwargs)
 
+    def fill(self, value, **kwargs):
+        self.find.fill(value, **kwargs)
+
+    def get_attribute(self, name, **kwargs):
+        return self.find.get_attribute(name, **kwargs)
+
+    def wait_for(self, **kwargs):
+        self.find.wait_for(**kwargs)
+
 
 class BasePage:
     def __init__(self, page: Page):
